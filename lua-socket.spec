@@ -1,12 +1,12 @@
 Summary:	LuaSocket is the most comprehensive networking support library for the Lua language
 Summary(hu.UTF-8):	LuaSocket egy hálózati kommunikációs könyvtár a Lua nyelvhez
 Name:		lua-socket
-Version:	2.0.2
-Release:	2
+Version:	3.0rc1
+Release:	1
 License:	BSD-like
 Group:		Development/Languages
-Source0:	http://luaforge.net/frs/download.php/2664/luasocket-%{version}.tar.gz
-# Source0-md5:	41445b138deb7bcfe97bff957503da8e
+Source0:	https://github.com/diegonehab/luasocket/archive/v3.0-rc1.tar.gz	
+# Source0-md5:	08bd2f265b244eb4bf5c2c36bf89b759
 URL:		http://luaforge.net/projects/luasocket/
 BuildRequires:	lua51-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,17 +30,21 @@ Requires:   lua51-devel
 Development headers for lua-socket.
 
 %prep
-%setup -q -n luasocket-%{version}
-echo "LUAINC=-I/usr/include/lua51" >> config
-sed -i "s|INSTALL_TOP_SHARE=.*|INSTALL_TOP_SHARE=$RPM_BUILD_ROOT%{_datadir}/lua/5.1/|" config
-sed -i "s|INSTALL_TOP_LIB=.*|INSTALL_TOP_LIB=$RPM_BUILD_ROOT%{_libdir}/lua/5.1/|" config
+%setup -q -n luasocket-3.0-rc1
 
 %build
-%{__make}
+%{__make} \
+	LUAINC=/usr/include/lua51 \
+    INSTALL_TOP_LDIR=$RPM_BUILD_ROOT%{_datadir}/lua/5.1/ \
+    INSTALL_TOP_CDIR=$RPM_BUILD_ROOT%{_libdir}/lua/5.1/
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install
+%{__make} \
+	LUAINC=/usr/include/lua51 \
+    INSTALL_TOP_LDIR=$RPM_BUILD_ROOT%{_datadir}/lua/5.1/ \
+    INSTALL_TOP_CDIR=$RPM_BUILD_ROOT%{_libdir}/lua/5.1/ \
+    install
 
 install -d $RPM_BUILD_ROOT%{_includedir}/lua51/luasocket
 install src/*.h $RPM_BUILD_ROOT%{_includedir}/lua51/luasocket/
