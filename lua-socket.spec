@@ -1,5 +1,5 @@
 %define		subver	rc1
-%define		rel		1
+%define		rel		2
 Summary:	LuaSocket is the most comprehensive networking support library for the Lua language
 Summary(hu.UTF-8):	LuaSocket egy hálózati kommunikációs könyvtár a Lua nyelvhez
 Name:		lua-socket
