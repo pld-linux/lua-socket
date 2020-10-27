@@ -11,7 +11,7 @@ Group:		Development/Languages
 Source0:	https://github.com/diegonehab/luasocket/archive/v%{version}-%{subver}.tar.gz
 # Source0-md5:	08bd2f265b244eb4bf5c2c36bf89b759
 URL:		http://luaforge.net/projects/luasocket/
-BuildRequires:	lua51-devel >= 5.1
+BuildRequires:	lua51-devel >= 5.1.5-7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,7 +32,7 @@ LuaSocket to najpełniejsza biblioteka sieciowa dla języka Lua. Daje
 Summary:	Development headers for lua-socket
 Summary(pl.UTF-8):	Pliki programistyczne lua-socket
 Group:		Development/Libraries
-Requires:	lua51-devel >= 5.1
+Requires:	lua51-devel >= 5.1.5-7
 
 %description devel
 Development headers for lua-socket.
